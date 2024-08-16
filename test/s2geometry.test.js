@@ -21,4 +21,22 @@ describe('S2 Geometry Library', function() {
     expect(latLng.lat).to.equal(90); 
     expect(latLng.lng).to.equal(-160); 
   });
+
+  it('largestAbsComponent should return the index of the largest absolute component', () => {
+    expect(S2.largestAbsComponent([3, -4, 2])).to.equal(1);
+  });
+
+  it('FaceUVToXYZ should convert face and uv to xyz coordinates', () => {
+    expect(S2.FaceUVToXYZ(0, [2, 3])).to.deep.equal([1, 2, 3]);
+  });
+  
+  it('UVToST should convert uv to st coordinates', () => {
+    expect(S2.UVToST([0, 0])).to.deep.equal([0.5, 0.5]);
+  });
+
+  it('rotateAndFlipQuadrant should rotate and flip the quadrant', () => {
+    let point = { x: 1, y: 2 };
+    S2.rotateAndFlipQuadrant(4, point, 1, 0);
+    expect(point).to.deep.equal({ x: 1, y: 2 });
+  });  
 });

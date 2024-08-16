@@ -3,7 +3,7 @@
 // LatLng object
 // rawLat: original latitude value (int or string), rawLng: original longitude value (int or string)
 // noWrap: boolean value, determine if the latitude and longitude should be wrapped and limited
-function LatLng(rawLat, rawLng, noWrap) {
+function LatLng(rawLat/*Number*/, rawLng/*Number*/, noWrap/*Boolean*/) {
   var lat = parseFloat(rawLat); // convert 'rawLat' to float
   var lng = parseFloat(rawLng); // convert 'rawLng' to float
 

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { LatLng, LatLngToXYZ, XYZToLatLng  } from '../src/latlng.js';
+import { LatLng, LatLngToXYZ, XYZToLatLng  } from '../src/LatLngConversion.js';
 
 
 describe('LatLng', function() {
