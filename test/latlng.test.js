@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { LatLng } from '../src/latlng.js';
+import { LatLng, LatLngToXYZ, XYZToLatLng  } from '../src/latlng.js';
 
 
 describe('LatLng', function() {
@@ -51,5 +51,24 @@ describe('LatLng', function() {
   it('should not wrap latitude and longitude if noWrap is true', function() {
     const latlng = LatLng(100, 200, true);
     expect(latlng).to.deep.equal({ lat: 100, lng: 200 });
+  });
+});
+
+describe('LatLngToXYZ', function() {
+  it('should convert latitude and longitude to XYZ coordinates', function() {
+    const latLng = { lat: 45, lng: 90 };
+    const result = LatLngToXYZ(latLng);
+    const expected = [0, 0.7071067811865476, 0.7071067811865475]; // 預期的 XYZ 座標
+    expect(result).to.deep.equal(expected);
+  });
+});
+
+// 測試 XYZToLatLng 函數
+describe('XYZToLatLng', function() {
+  it('should convert XYZ coordinates to latitude and longitude', function() {
+    const xyz = [0, 0.7071067811865476, 0.7071067811865475];
+    const result = XYZToLatLng(xyz);
+    const expected = { lat: 45, lng: 90 }; // 預期的緯度和經度
+    expect(result).to.deep.equal(expected);
   });
 });

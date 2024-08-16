@@ -25,4 +25,25 @@ function LatLng(rawLat, rawLng, noWrap) {
 LatLng.DEG_TO_RAD = Math.PI / 180; // degrees to radians
 LatLng.RAD_TO_DEG = 180 / Math.PI; // radians to degrees
 
-export { LatLng };
+// convert latitude and longitude to XYZ coordinates
+function LatLngToXYZ(latLng) {
+  var d2r = LatLng.DEG_TO_RAD;
+
+  var phi = latLng.lat * d2r;
+  var theta = latLng.lng * d2r;
+
+  var cosphi = Math.cos(phi);
+
+  return [Math.cos(theta) * cosphi, Math.sin(theta) * cosphi, Math.sin(phi)];
+}
+
+// convert XYZ coordinates to latitude and longitude
+function XYZToLatLng(xyz) {
+  var r2d = LatLng.RAD_TO_DEG;
+
+  var lat = Math.atan2(xyz[2], Math.sqrt(xyz[0] * xyz[0] + xyz[1] * xyz[1]));
+  var lng = Math.atan2(xyz[1], xyz[0]);
+
+  return LatLng(lat * r2d, lng * r2d);
+}
+export { LatLng, LatLngToXYZ, XYZToLatLng };

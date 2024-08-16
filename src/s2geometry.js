@@ -1,13 +1,16 @@
 'use strict';
 
-import { LatLng } from './latlng.js'; // 使用 ES 模塊語法導入 latlng.js
-
+// use ES6 import syntax to import LatLng, LatLngToXYZ, and XYZToLatLng from latlng.js
+import { LatLng, LatLngToXYZ, XYZToLatLng } from './latlng.js'; 
 var S2 = { L: {} };
 
-S2.L.LatLng = LatLng; // 將 LatLng 添加到 S2.L 對象中
+// assign LatLng, LatLngToXYZ, and XYZToLatLng to S2 object
+S2.L.LatLng = LatLng; 
+S2.LatLngToXYZ = LatLngToXYZ;
+S2.XYZToLatLng = XYZToLatLng;
 
-export { S2 }; // 導出 S2 對象
-
+// export S2 object
+export { S2 }; 
 
 /*
 S2.LatLngToXYZ = function(latLng) {

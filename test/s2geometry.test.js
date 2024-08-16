@@ -5,7 +5,7 @@ describe('S2 Geometry Library', function() {
   it('should correctly import LatLng', function() {
     expect(S2.L.LatLng).to.be.a('function');
 
-    // 測試 LatLng 函數的基本功能
+    // test if the imported LatLng function is the same as the one in latlng.js
     const latLng = S2.L.LatLng(45, 90);
     expect(latLng).to.have.property('lat', 45);
     expect(latLng).to.have.property('lng', 90);
@@ -18,7 +18,7 @@ describe('S2 Geometry Library', function() {
 
   it('should wrap latitude and longitude correctly', function() {
     const latLng = S2.L.LatLng(100, 200);
-    expect(latLng.lat).to.equal(90); // 緯度應該被限制在 90
-    expect(latLng.lng).to.be.within(-180, 180); // 經度應該被包裹在 -180 到 180 之間
+    expect(latLng.lat).to.equal(90); 
+    expect(latLng.lng).to.equal(-160); 
   });
 });
