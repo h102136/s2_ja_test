@@ -54,21 +54,50 @@ describe('LatLng', function() {
   });
 });
 
+// test LatLngToXYZ function
 describe('LatLngToXYZ', function() {
-  it('should convert latitude and longitude to XYZ coordinates', function() {
+  it('should convert latitude and longitude to XYZ coordinates test1 (45,90)', function() {
     const latLng = { lat: 45, lng: 90 };
     const result = LatLngToXYZ(latLng);
-    const expected = [0, 0.7071067811865476, 0.7071067811865475]; // 預期的 XYZ 座標
-    expect(result).to.deep.equal(expected);
+    const expected = [0, 0.7071067811865476, 0.7071067811865475]; //expected value
+
+    expect(result[0]).to.be.closeTo(expected[0], 1e-10); //compare the result with the expected value, 1e-10 is the precision
+    expect(result[1]).to.be.closeTo(expected[1], 1e-10); //result[] should be close to expected[] less than 1e-10
+    expect(result[2]).to.be.closeTo(expected[2], 1e-10); 
   });
 });
 
-// 測試 XYZToLatLng 函數
+describe('LatLngToXYZ', function() {
+  it('should convert latitude and longitude to XYZ coordinates test2 (45,45)', function() {
+    const latLng = { lat: 45, lng: 45 };
+    const result = LatLngToXYZ(latLng);
+    const expected = [0.5, 0.5, 0.7071]; 
+    
+    expect(result[0]).to.be.closeTo(expected[0], 1e-3); //result[] should be close to expected[] less than 1e-3
+    expect(result[2]).to.be.closeTo(expected[2], 1e-3); 
+    expect(result[2]).to.be.closeTo(expected[2], 1e-3); 
+  });
+});
+
+// test XYZToLatLng function
 describe('XYZToLatLng', function() {
-  it('should convert XYZ coordinates to latitude and longitude', function() {
+  it('should convert XYZ coordinates to latitude and longitude test1', function() {
     const xyz = [0, 0.7071067811865476, 0.7071067811865475];
     const result = XYZToLatLng(xyz);
-    const expected = { lat: 45, lng: 90 }; // 預期的緯度和經度
-    expect(result).to.deep.equal(expected);
+    const expected = { lat: 45, lng: 90 }; 
+
+    expect(result.lat).to.be.closeTo(expected.lat, 1e-10);
+    expect(result.lng).to.be.closeTo(expected.lng, 1e-10);
+  });
+});
+
+describe('XYZToLatLng', function() {
+  it('should convert XYZ coordinates to latitude and longitude test2', function() {
+    const xyz = [0.5, 0.5, 0.7071];
+    const result = XYZToLatLng(xyz);
+    const expected = { lat: 45, lng: 45 }; 
+
+    expect(result.lat).to.be.closeTo(expected.lat, 1e-3);
+    expect(result.lng).to.be.closeTo(expected.lng, 1e-3);
   });
 });
