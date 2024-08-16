@@ -3,6 +3,7 @@
 // use ES6 import syntax to import LatLng, LatLngToXYZ, and XYZToLatLng from latlng.js
 import { LatLng, LatLngToXYZ, XYZToLatLng } from './LatLngConversion.js'; 
 import { S2U, largestAbsComponent, faceXYZToUV, singleSTtoUV, singleUVtoST, rotateAndFlipQuadrant }from './S2GeometryUtils.js';
+import { pointToHilbertQuadList } from './HilbertUtils.js';
 var S2 = { L: {} };
 
 // assign LatLng, LatLngToXYZ, and XYZToLatLng to S2 object
@@ -21,6 +22,8 @@ S2.UVToST = S2U.UVToST;
 S2.STToIJ = S2U.STToIJ;
 S2.IJToST = S2U.IJToST;
 S2.rotateAndFlipQuadrant = rotateAndFlipQuadrant;
+
+S2.pointToHilbertQuadList = pointToHilbertQuadList;
 // export S2 object
 export { S2 }; 
 
