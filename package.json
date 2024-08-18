@@ -1,11 +1,32 @@
 {
   "type": "module",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc --reporter lcov ./node_modules/mocha/bin/_mocha 'test/**/*.js' --exit"
   },
   "devDependencies": {
     "chai": "^5.1.1",
     "mocha": "^10.7.3",
-    "sinon": "^18.0.0"
+    "nyc": "^17.0.0",
+    "sinon": "^18.0.0",
+    "inquirer": "^8.0.0"
+  },
+  "dependencies": {
+    "inquirer": "^10.1.8",
+    "long": "^5.2.3"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "all": true,
+    "check-coverage": true
   }
 }

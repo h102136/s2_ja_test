@@ -1,31 +1,33 @@
 'use strict';
-
-// use ES6 import syntax to import LatLng, LatLngToXYZ, and XYZToLatLng from latlng.js
 import { LatLng, LatLngToXYZ, XYZToLatLng } from './LatLngConversion.js'; 
-import { S2U, largestAbsComponent, faceXYZToUV, singleSTtoUV, singleUVtoST, rotateAndFlipQuadrant }from './S2GeometryUtils.js';
-import { pointToHilbertQuadList } from './HilbertUtils.js';
-var S2 = { L: {} };
+import { faceXYZToUV, XYZToFaceUV, FaceUVToXYZ }from './FaceUVConversion.js';
+import { STToUV, UVToST } from './STUVConversion.js';
+import { STToIJ, IJToST, rotateAndFlipQuadrant } from './IJConversion.js';
+import { pointToHilbertQuadList } from './HilbertCurve.js';
+import { S2Cell } from './S2Cell.js';
+import { S2CellUtils } from './S2CellUtils.js';
 
-// assign LatLng, LatLngToXYZ, and XYZToLatLng to S2 object
-S2.L.LatLng = LatLng; 
-S2.LatLngToXYZ = LatLngToXYZ;
-S2.XYZToLatLng = XYZToLatLng;
+const S2 = {
+    L: {
+        LatLng,
+    },
+    LatLngToXYZ,
+    XYZToLatLng,
+    FaceXYZToUV: faceXYZToUV,
+    XYZToFaceUV,
+    FaceUVToXYZ,
+    STToUV,
+    UVToST,
+    STToIJ,
+    IJToST,
+    rotateAndFlipQuadrant,
+    pointToHilbertQuadList,
+    S2Cell,
+    S2CellUtils,
+};
 
-S2.largestAbsComponent = largestAbsComponent;
-S2.faceXYZToUV = faceXYZToUV;
-S2.XYZToFaceUV = S2U.XYZToFaceUV;
-S2.FaceUVToXYZ = S2U.FaceUVToXYZ;
-S2.singleSTtoUV = singleSTtoUV;
-S2.STToUV = S2U.STToUV;
-S2.singleUVtoST = singleUVtoST;
-S2.UVToST = S2U.UVToST;
-S2.STToIJ = S2U.STToIJ;
-S2.IJToST = S2U.IJToST;
-S2.rotateAndFlipQuadrant = rotateAndFlipQuadrant;
+export { S2 };
 
-S2.pointToHilbertQuadList = pointToHilbertQuadList;
-// export S2 object
-export { S2 }; 
 
 /*
 S2.LatLngToXYZ = function(latLng) {
