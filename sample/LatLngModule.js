@@ -3,7 +3,7 @@
 import { LatLng, LatLngToXYZ, XYZToLatLng } from '../src/LatLngConversion.js';
 
 const LatLngModule = {
-  name: "LatLngConversion", // functon name
+  name: "LatLngConversion", 
   functions: {
     "LatLngToXYZ": {
       func: LatLngToXYZ,
